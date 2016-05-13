@@ -14,4 +14,6 @@ Select radio: "Let me select individual events."
 
 Click checkbox: "Pull request review comment"
 
+Click checkbox: "Issue comment"
+
 Click button: Add webhook

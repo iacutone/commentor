@@ -1,6 +1,6 @@
 defmodule Commentor.UserController do
   use Commentor.Web, :controller
-  # require IEx
+  
   plug Ueberauth
 
   alias Commentor.User
@@ -64,26 +64,4 @@ defmodule Commentor.UserController do
   #   |> redirect(to: user_path(conn, :index))
   # end
 
-  def trello(conn, _params) do
-    user = Repo.get_by(User, uid: Integer.to_string(_params["sender"]["id"]))
-
-    card_url = _params["pull_request"]["body"]
-
-    url_contains_trello = Regex.match?(~r[trello], card_url)
-
-    if url_contains_trello do
-      card_list = String.split(card_url, "/")
-      card_id = Enum.at(card_list, 4)
-    end
-
-    if user do
-      key = System.get_env("TRELLO_KEY")
-      token = System.get_env("TRELLO_TOKEN")
-
-      pr_url = _params["pull_request"]["url"]
-      comment = pr_url <> " " <> "\n sent from Commentor"
-
-      HTTPoison.post "https://trello.com/1/cards/#{card_id}/actions/comments?key=#{key}&token=#{token}&text=#{comment}", ""
-    end
-  end
 end

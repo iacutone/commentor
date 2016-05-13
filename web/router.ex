@@ -16,11 +16,8 @@ defmodule Commentor.Router do
   scope "/api", Commentor do
     pipe_through :api
 
-    get "/trello", UserController, :trello
-    post "/trello", UserController, :trello
-
-    get "/pivotal", UserController, :pivotal
-    post "/pivotal", UserController, :pivotal
+    post "/trello", ApiController, :trello
+    post "/pivotal", ApiController, :pivotal
   end
 
   scope "/", Commentor do

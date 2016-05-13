@@ -1,0 +1,3 @@
+<%= if user = current_user(@conn) do %>
+  Thanks for signing up, <strong><%= user.email %></strong>
+<% end %>

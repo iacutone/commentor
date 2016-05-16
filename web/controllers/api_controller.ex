@@ -13,6 +13,8 @@ defmodule Commentor.ApiController do
         card_url = _params["pull_request"]["body"]
       _params["issue"] ->
         card_url = _params["issue"]["body"]
+      true ->
+        card_url = false
     end
 
     if card_url do

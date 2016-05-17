@@ -17,6 +17,10 @@ defmodule Commentor.ApiController do
         card_url = false
     end
 
+    if _params["action"] == "labeled" do
+      card_url = false
+    end
+
     if card_url do
       url_contains_trello = Regex.match?(~r[trello], card_url)
     end

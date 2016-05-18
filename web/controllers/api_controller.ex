@@ -17,7 +17,7 @@ defmodule Commentor.ApiController do
         card_url = false
     end
 
-    if _params["action"] == "labeled" do
+    if _params["action"] == "labeled" || _params["action"] == "deleted" do
       card_url = false
     end
 

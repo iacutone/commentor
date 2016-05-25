@@ -9,6 +9,8 @@ defmodule Commentor.ApiController do
     user = Repo.get_by(User, uid: Integer.to_string(_params["sender"]["id"]))
 
     cond do
+      _params["comment"] ->
+        card_url = _params["comment"]["body"]
       _params["pull_request"] ->
         card_url = _params["pull_request"]["body"]
       _params["issue"] ->
